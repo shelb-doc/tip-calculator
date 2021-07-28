@@ -1,91 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Tip calculator app</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tip calculator app</title>
 
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-
-</head>
-<body>
-  
-  <header>
-    <img src="images/logo.svg" alt="splitter logo" class="logo">
-  </header>
-
-  <div class="main">
-
-    <div class="left">
-  
-      <div class="text_container">
-        <span class="text_gray">Bill</span>
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full-container">
+      <div class="img-container">
+        <img src="./images/logo.svg" class="img-fluid logo" alt="logo" />
       </div>
-  
-      <div class="bill_container">
-        <img src="images/icon-dollar.svg">
-        <input id="bill_input" type="number" placeholder="0"/>
+      <div class="card-container">
+        <section class="top-container">
+          <div class="value-check">
+            <label for="bill">Bill</label>
+            <img src="./images/icon-dollar.svg" alt="dollar" />
+            <input
+              type="number"
+              min="1"
+              name="bill"
+              class="bill"
+              id="bill"
+              placeholder="0"
+            />
+          </div>
+          <div class="tip-percent">
+            <label>Select Tip %</label>
+            <div class="tip-button">
+              <div class="row">
+                <div class="col">
+                  <button class="btn tipBtn" value="5">5%</button>
+                </div>
+                <div class="col">
+                  <button class="btn tipBtn" value="10">10%</button>
+                </div>
+                <div class="col">
+                  <button class="btn tipBtn" value="15">15%</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button class="btn tipBtn" value="25">25%</button>
+                </div>
+                <div class="col">
+                  <button class="btn tipBtn" value="50">50%</button>
+                </div>
+                <div class="col">
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    name="number"
+                    id="number"
+                    class="number tipBtn"
+                    placeholder="custom"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="value-check">
+            <label for="people"
+              >Number of People <small>Error Message</small></label
+            >
+            <img src="./images/icon-person.svg" alt="person" />
+            <input
+              type="number"
+              min="1"
+              name="people"
+              id="people"
+              class="people"
+              placeholder="0"
+            />
+          </div>
+        </section>
+        <section class="bottom-container">
+          <div class="tip-container">
+            <div class="tip-info">
+              <h5>Tip Amount</h5>
+              <h6>/ person</h6>
+            </div>
+            <div id="tipAmount">$0.00</div>
+          </div>
+          <div class="price-container">
+            <div class="price-info">
+              <h5>Total</h5>
+              <h6>/ person</h6>
+            </div>
+            <div id="priceAmount">$0.00</div>
+          </div>
+          <button class="btn" id="reset">RESET</button>
+        </section>
       </div>
-  
-      <div class="text_container">
-        <span class="text_gray">Select Tip %</span>
-      </div>
-  
-      <div class="buttons">
-        <button id="fivePercent">5%</button>
-        <button  id="tenPercent">10%</button>
-        <button  id="fifteenPercent">15%</button>
-        <button  id="twentyfivePercent">25%</button>
-        <button  id="fiftyPercent">50%</button>
-        <input id="custom_input" class="custom" type="number" placeholder="Custom"/>
-      </div>
-  
-      <div class="text_container space">
-        <span class="text_gray">Number of People</span>
-        <span id="zero">Can't be zero</span>
-      </div>
-      
-      <div class="nr_people_container">
-        <img src="images/icon-person.svg">
-        <input id="nr_people_input" class="nr_people" type="number" placeholder="0"/>
-      </div>
-  
     </div>
-  
-    <div class="right">
-      <div class="right_element">
-        <div class="right_text">
-          <span class="right_text_big">Tip Amount</span>
-          <span class="right_text_little">/ person</span>
-        </div>
-        <div id="tip" class="value">$0</div>
-      </div>
-      <div class="right_element">
-        <div class="right_text">
-          <span class="right_text_big">Total</span>
-          <span class="right_text_little">/ person</span>
-        </div>
-        <div id="total" class="value">$0</div>
-      </div>
-      <button id="reset">Reset</button>
-    </div>
-  
-  </div>
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Shelby De Oliveira Cignetti</a>.
-  </div>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
